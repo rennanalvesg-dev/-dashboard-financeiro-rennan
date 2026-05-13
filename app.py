@@ -55,7 +55,7 @@ st.markdown("""
 
 .stApp {
     background-color: #070B14;
-    color: white;
+    color: #F9FAFB;
 }
 
 .block-container {
@@ -70,16 +70,19 @@ st.markdown("""
     padding: 22px;
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: 0 0 30px rgba(124,58,237,0.08);
+    margin-bottom: 20px;
 }
 
 .metric-title {
     color: #9CA3AF;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .metric-value {
     font-size: 38px;
     font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .green {
@@ -99,15 +102,17 @@ st.markdown("""
 }
 
 .section-title {
-    font-size: 30px;
+    font-size: 38px;
     font-weight: 700;
     margin-bottom: 0px;
+    color: white;
 }
 
 .section-subtitle {
     color: #9CA3AF;
     margin-top: -5px;
     margin-bottom: 25px;
+    font-size: 18px;
 }
 
 </style>
@@ -137,15 +142,15 @@ with c1:
     st.markdown(f"""
     <div class="card">
         <div class="metric-title">
-        Receita Mensal
+            Receita Mensal
         </div>
 
         <div class="metric-value green">
-        R$ {receita:,.0f}
+            R$ {receita:,.0f}
         </div>
 
         <div class="metric-title">
-        Total líquido
+            Total líquido
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -154,15 +159,15 @@ with c2:
     st.markdown(f"""
     <div class="card">
         <div class="metric-title">
-        Gastos no Período
+            Gastos no Período
         </div>
 
         <div class="metric-value red">
-        R$ {gastos:,.0f}
+            R$ {gastos:,.0f}
         </div>
 
         <div class="metric-title">
-        25,6% da receita
+            25,6% da receita
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -171,15 +176,15 @@ with c3:
     st.markdown(f"""
     <div class="card">
         <div class="metric-title">
-        Aporte / Investimentos
+            Aporte / Investimentos
         </div>
 
         <div class="metric-value blue">
-        R$ {aporte:,.0f}
+            R$ {aporte:,.0f}
         </div>
 
         <div class="metric-title">
-        62% da receita
+            62% da receita
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -188,15 +193,15 @@ with c4:
     st.markdown(f"""
     <div class="card">
         <div class="metric-title">
-        Patrimônio Total
+            Patrimônio Total
         </div>
 
         <div class="metric-value purple">
-        R$ {patrimonio:,.0f}
+            R$ {patrimonio:,.0f}
         </div>
 
         <div class="metric-title green">
-        +2,35% no mês
+            +2,35% no mês
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -212,10 +217,6 @@ col1,col2 = st.columns([1.1,1])
 
 with col1:
 
-    st.markdown("""
-    <div class="card">
-    """, unsafe_allow_html=True)
-
     fig_gastos = px.pie(
         gastos_categoria,
         names="Categoria",
@@ -227,7 +228,7 @@ with col1:
     fig_gastos.update_layout(
         paper_bgcolor="#111827",
         plot_bgcolor="#111827",
-        font_color="white",
+        font_color="#F9FAFB",
         title="Gastos por Categoria",
         height=450
     )
@@ -237,13 +238,7 @@ with col1:
         use_container_width=True
     )
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
 with col2:
-
-    st.markdown("""
-    <div class="card">
-    """, unsafe_allow_html=True)
 
     fig_evolucao = go.Figure()
 
@@ -263,7 +258,7 @@ with col2:
         title="Evolução dos Gastos",
         paper_bgcolor="#111827",
         plot_bgcolor="#111827",
-        font_color="white",
+        font_color="#F9FAFB",
         height=450
     )
 
@@ -271,8 +266,6 @@ with col2:
         fig_evolucao,
         use_container_width=True
     )
-
-    st.markdown("</div>", unsafe_allow_html=True)
 
 st.write("")
 st.write("")
@@ -284,10 +277,6 @@ st.write("")
 col3,col4 = st.columns([1.1,1])
 
 with col3:
-
-    st.markdown("""
-    <div class="card">
-    """, unsafe_allow_html=True)
 
     fig_ativos = px.pie(
         ativos,
@@ -301,7 +290,7 @@ with col3:
         title="Alocação de Ativos",
         paper_bgcolor="#111827",
         plot_bgcolor="#111827",
-        font_color="white",
+        font_color="#F9FAFB",
         height=450
     )
 
@@ -309,8 +298,6 @@ with col3:
         fig_ativos,
         use_container_width=True
     )
-
-    st.markdown("</div>", unsafe_allow_html=True)
 
 with col4:
 
@@ -333,9 +320,6 @@ with col4:
     st.caption("R$ 2.064 / R$ 3.000")
 
     st.write("")
-    st.write("")
-    st.write("")
-
     st.metric(
         "Patrimônio Atual",
         f"R$ {patrimonio:,.0f}"
